@@ -12,9 +12,22 @@ def H(x):
 def ket(x):
     return f"\\ket{{{x}}}"
 
-def soma(x):
-    return f"\\left({{{x}}}\\right)"
 
+
+def soma(x):
+    lista = [1,2,3,4,5]
+    aberto = []
+    for x in lista:
+        aberto.append(f"{x}") 
+    aberto = "+".join(aberto)
+    return aberto
+
+print(soma(5))
+
+
+
+# f"\\left({{{x}}}\\right)"
+'''
 print(
 
     frac(1,sqrt(H(5)))
@@ -56,4 +69,4 @@ print(
 
 
 
-
+'''
