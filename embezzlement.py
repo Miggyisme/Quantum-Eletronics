@@ -1,34 +1,59 @@
+import re
+
 def frac(x, y):
-    return f"\\frac{{{x}}}{{{y}}}"
+    return f"\\dfrac{{{x}}}{{{y}}}"
 
 def sqrt(x):
     return f"\\sqrt{{{x}}}"
 
+def H(x):
+    return f"H_{{{x}}}"
+
 def ket(x):
     return f"\\ket{{{x}}}"
 
-def expression(vars):
+def soma(x):
+    return f"\\left({{{x}}}\\right)"
 
-    terms = []
-    for i, k in vars:
-        terms.append(f"{frac(1, sqrt(i))}{ket(k)}")
-    return f"{frac(1, sqrt('H_5'))}\\left({'+'.join(terms)}\\right)"
-vars=[]
+print(
 
-def generate(n):
-    vars=[]
-    for i in range(1,n+1):
-        k = (i+1)//2
-        if i%2==1:
-            valor = f"{k}1,{k}1"
-        else:
-            valor = f"{k}0,{k}0"
-        vars.append((i, valor))
-    return vars
+    frac(1,sqrt(H(5)))
+    +
+    soma(
 
-n=5
 
-vars=generate(n)
+        frac(1,sqrt(1))
+        +
+        ket("11,11")
+        +"+"+
+        
 
-latex_str = expression(vars)
-print(latex_str)
+        frac(1,sqrt(2))
+        +
+        ket("10,10")
+        +"+"+
+
+
+        frac(1,sqrt(3))
+        +
+        ket("21,21")
+        +"+"+
+
+
+        frac(1,sqrt(4))
+        +
+        ket("20,20")
+        +"+"+
+
+
+        frac(1,sqrt(5))
+        +
+        ket("31,31")
+
+
+    )
+)
+
+
+
+
