@@ -71,8 +71,14 @@ def gerar_latex(values_alpha_beta):
     termos = []
 
     for camada in values_alpha_beta:  # percorre alpha e beta
+
+
         for bloco in camada:  # percorre cada n_val
             n_val, pares = bloco
+
+
+
+            
             for par in pares:  # percorre cada par interno
                 simbolo, estados = par
                 # Gera o termo com frac e ket
