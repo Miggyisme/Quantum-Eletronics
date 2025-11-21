@@ -1,5 +1,5 @@
 ############## INSIRA O n AQUI ##############
-n = 3
+n = 2
 
 lista_de_n = list(range(1, n+1))
 binary_state = [0, 0, 1, 1]  # \ket{_0,_0} + \ket{_1,_1}
@@ -36,7 +36,7 @@ for alpha in alpha_beta:
         camada.append([n_val, novos_pares])
     values_alpha_beta.append(camada)
 
-print(values_alpha_beta)
+# print(values_alpha_beta)
 
 
 
