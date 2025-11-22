@@ -1,6 +1,6 @@
 from math import gcd
 ############## INSIRA O n AQUI ##############
-n = 3
+n = 4
 
 lista_de_n = list(range(1, n+1))
 binary_state = [0, 0, 1, 1]  # \ket{_0,_0} + \ket{_1,_1}
@@ -61,11 +61,11 @@ def mainprint(values_alpha_beta):
         # i[0] = numerator
         # i[1] = denominator
         ############ OPERATION HERE ############
-        i[0] = i[0] 
+        i[0] = i[0] * 2
         i[1] = i[1]
 
 
-        num = i[0] * 2
+        num = i[0]
         den = i[1]
         m = gcd(num, den)
         num_simpl = num // m
