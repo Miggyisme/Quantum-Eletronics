@@ -1,3 +1,4 @@
+from math import gcd
 ############## INSIRA O n AQUI ##############
 n = 2
 
@@ -17,26 +18,13 @@ values_separados = [
     for sub in values
 ]
 
-# Adicionando o valor de cada n da lista na frente
-values_indiciados = [
-    [i, v] for i, v in zip(lista_de_n, values_separados)
+
+
+# Adicionando o termo da raiz.
+master = [
+    [1, i, v] for i, v in zip(lista_de_n, values_separados)
 ]
-
-# Implementação nova de alpha e beta
-alpha_beta = [0, 1]
-values_alpha_beta = []
-
-for alpha in alpha_beta:
-    camada = []
-    simbolo = 'a' if alpha == 0 else 'b'  # define o símbolo conforme alpha
-    for bloco in values_indiciados:
-        n_val, pares = bloco
-        # adiciona o símbolo e o par
-        novos_pares = [[simbolo, [f"{alpha}{a}", b]] for a, b in pares]
-        camada.append([n_val, novos_pares])
-    values_alpha_beta.append(camada)
-
-print(values_alpha_beta)
+print("Guide list = ",master,"\n")
 
 
 
@@ -66,29 +54,57 @@ def soma(x):
 
 
 
+############ TRABALHAR AQUI. FAZER CONTAS AQUI ############
+contador = 0
+def mainprint(values_alpha_beta):
 
-def gerar_latex(values_alpha_beta):
+    for i in master:
+        # i[0] = numerador
+        # i[1] = denominador
+
+        i[0] = i[0] * 2
+        i[1] = i[1]
+
+
+        num = i[0]
+        den = i[1]
+        m = gcd(num, den)
+        num_simpl = num // m
+        den_simpl = den // m
+
+        i[0] = num_simpl
+        i[1] = den_simpl
+
+    return master
+
+
+
+
+
+
+
+
+
+
+alter = mainprint(master)
+print("Modified List =",alter,"\n")
+
+
+
+
+
+####### PRINT ######## NÃO MEXER #######
+def gerar_latex(master):
     termos = []
 
+    for constante, n_val, pares in master:
+        for a, b in pares:
+            estados = a + ',' + b
+            termo = f"\\frac{{{sqrt(constante)}}}{{{sqrt(n_val)}}}{ket(estados)}"
+            termos.append(termo)
 
-    for camada in values_alpha_beta:  # percorre alpha e beta
-
-
-        for bloco in camada:  # percorre cada n_val
-            n_val, pares = bloco
-
-
-
-            
-            for par in pares:  # percorre cada par interno
-                simbolo, estados = par
-                # Gera o termo com frac e ket
-                termo = f"\\frac{{{simbolo}}}{{{sqrt(n_val)}}}{ket(estados[0]+','+estados[1])}"
-                termos.append(termo)
-
-    # Junta todos os termos com + dentro de \left( ... \right)
     resultado = "\\left(\n" + "+\n".join(termos) + "\n\\right)"
     return resultado
 
-latex_str = gerar_latex(values_alpha_beta)
-print(latex_str)
+print("Latex \n\n",gerar_latex(alter))
+
