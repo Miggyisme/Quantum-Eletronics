@@ -1,6 +1,6 @@
 from math import gcd
 ############## INSIRA O n AQUI ##############
-n = 4
+n = 2
 
 lista_de_n = list(range(1, n+1))
 binary_state = [0, 0, 1, 1]  # \ket{_0,_0} + \ket{_1,_1}
@@ -61,7 +61,7 @@ def mainprint(values_alpha_beta):
         # i[0] = numerator
         # i[1] = denominator
         ############ OPERATION HERE ############
-        i[0] = i[0] * 2
+        i[0] = i[0]
         i[1] = i[1]
 
 
@@ -108,8 +108,10 @@ def gerar_latex(master):
 
             termos.append(termo)
 
+    phi = f"\\ket{{\\phi({n})}}=cte"
+
     resultado = "\\left(\n" + "+\n".join(termos) + "\n\\right)"
-    return resultado
+    return phi+resultado
 
 print("Latex \n\n",gerar_latex(alter))
 
